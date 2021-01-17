@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import AddBookmark from './AddBookmark/AddBookmark';
+import EditBookmark from './EditBookmark/EditBookmark';
 import BookmarkList from './BookmarkList/BookmarkList';
 import Nav from './Nav/Nav';
 import config from './config';
@@ -49,6 +50,26 @@ class App extends Component {
     })
   }
 
+<<<<<<< Updated upstream
+=======
+  deleteBookmark = bookmarkId => {
+    const newBookmarks = this.state.bookmarks.filter(bm =>
+      bm.id !== bookmarkId
+    )
+    this.setState({
+      bookmarks: newBookmarks
+    })
+  }
+
+  updateBookmark = updatedBookmark => {
+    this.setState({
+      bookmarks: this.state.bookmarks.map(bm =>
+        (bm.id !== updatedBookmark.id) ? bm : updatedBookmark
+      )
+    })
+  }
+
+>>>>>>> Stashed changes
   componentDidMount() {
     fetch(config.API_ENDPOINT, {
       method: 'GET',
@@ -67,7 +88,9 @@ class App extends Component {
       .catch(error => this.setState({ error }))
   }
 
+
   render() {
+<<<<<<< Updated upstream
     const { bookmarks } = this.state
     return (
       <main className='App'>
@@ -93,6 +116,35 @@ class App extends Component {
               />}
           />
         </div>
+=======
+    const contextValue = {
+      bookmarks: this.state.bookmarks,
+      addBookmark: this.addBookmark,
+      deleteBookmark: this.deleteBookmark,
+      updateBookmark: this.updateBookmark,
+    }
+    return (
+      <main className='App'>
+        <h1>Bookmarks!</h1>
+        <BookmarksContext.Provider value={contextValue}>
+          <Nav />
+          <div className='content' aria-live='polite'>
+            <Route
+              path='/add-bookmark'
+              component={AddBookmark}
+            />
+            <Route
+              exact
+              path='/'
+              component={BookmarkList}
+            />
+            <Route
+              path='/edit/:bookmarkId'
+              component={EditBookmark}
+            />
+          </div>
+        </BookmarksContext.Provider>
+>>>>>>> Stashed changes
       </main>
     );
   }

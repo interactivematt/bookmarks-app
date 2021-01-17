@@ -22,5 +22,22 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "description": "_This project is a demonstration for Thinkful's React course_",
+  "main": "index.js",
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "nodemon": "^2.0.7"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/interactivematt/bookmarks-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/interactivematt/bookmarks-app/issues"
+  },
+  "homepage": "https://github.com/interactivematt/bookmarks-app#readme"
 }
